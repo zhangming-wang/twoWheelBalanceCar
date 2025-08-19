@@ -1,0 +1,138 @@
+int32 mode
+int64 id
+
+uint32 milliseconds
+uint32 attitude_loop_milliseconds_cnt
+uint32 speed_loop_milliseconds_cnt
+
+bool enable_speed_plan
+
+float32 speed_percent
+float32 max_v
+float32 max_acc
+float32 jerk
+
+float32 wheel_diameter
+float32 track_width
+int32 pluses_per_revolution
+int32 revolutions_per_minute
+
+float32 position_p
+float32 position_i
+float32 position_d
+float32 position_max_integral
+
+float32 attitude_p
+float32 attitude_i
+float32 attitude_d
+float32 attitude_max_integral
+
+float32 line_speed_p
+float32 line_speed_i
+float32 line_speed_d
+float32 line_speed_max_integral
+
+float32 angle_speed_p
+float32 angle_speed_i
+float32 angle_speed_d
+float32 angle_speed_max_integral
+
+float32 left_motor_p
+float32 left_motor_i
+float32 left_motor_d
+float32 left_motor_max_integral
+
+float32 right_motor_p
+float32 right_motor_i
+float32 right_motor_d
+float32 right_motor_max_integral
+
+int32 pin_sda
+int32 pin_scl
+
+int32 left_motor_pina
+int32 left_motor_pinb
+int32 left_motor_pwm
+int32 left_encoder_pina
+int32 left_encoder_pinb
+
+int32 right_motor_pina
+int32 right_motor_pinb
+int32 right_motor_pwm
+int32 right_encoder_pina
+int32 right_encoder_pinb
+
+---
+
+int32 state
+int64 id
+int32 motion_mode
+
+bool enable_speed_plan
+
+uint32 milliseconds
+uint32 attitude_loop_milliseconds_cnt
+uint32 speed_loop_milliseconds_cnt
+
+float32 speed_percent
+float32 max_v
+float32 max_acc
+float32 jerk
+
+float32 wheel_diameter
+float32 track_width
+int32 pluses_per_revolution
+int32 revolutions_per_minute
+
+float32 position_p
+float32 position_i
+float32 position_d
+float32 position_max_integral
+
+float32 attitude_p
+float32 attitude_i
+float32 attitude_d
+float32 attitude_max_integral
+
+float32 line_speed_p
+float32 line_speed_i
+float32 line_speed_d
+float32 line_speed_max_integral
+
+float32 angle_speed_p
+float32 angle_speed_i
+float32 angle_speed_d
+float32 angle_speed_max_integral
+
+float32 left_motor_p
+float32 left_motor_i
+float32 left_motor_d
+float32 left_motor_max_integral
+
+float32 right_motor_p
+float32 right_motor_i
+float32 right_motor_d
+float32 right_motor_max_integral
+
+int32 pin_sda
+int32 pin_scl
+
+int32 left_motor_pina
+int32 left_motor_pinb
+int32 left_motor_pwm
+int32 left_encoder_pina
+int32 left_encoder_pinb
+
+int32 right_motor_pina
+int32 right_motor_pinb
+int32 right_motor_pwm
+int32 right_encoder_pina
+int32 right_encoder_pinb
+
+int16 accel_offset_x
+int16 accel_offset_y
+int16 accel_offset_z
+int16 gyro_offset_x
+int16 gyro_offset_y
+int16 gyro_offset_z
+

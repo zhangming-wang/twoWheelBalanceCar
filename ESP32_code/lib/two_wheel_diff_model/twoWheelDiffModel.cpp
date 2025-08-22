@@ -317,8 +317,6 @@ void TwoWheelDiffModel::brake() {
     running_ = false;
     left_motor_control_->brake();
     right_motor_control_->brake();
-    delay(100);
-    running_ = true;
 }
 
 void TwoWheelDiffModel::move_front() {
@@ -718,15 +716,17 @@ void TwoWheelDiffModel::_load_settings() {
 
     left_motor_pinA_ = preferences_.getInt("lMoPinA", left_motor_pinA_);
     left_motor_pinB_ = preferences_.getInt("lMoPinB", left_motor_pinB_);
+    left_motor_pinPWM_ = preferences_.getInt("lMoPWMPin", left_motor_pinPWM_);
+
     left_encoder_pinA_ = preferences_.getInt("lenPinA", left_encoder_pinA_);
     left_encoder_pinB_ = preferences_.getInt("lenPinB", left_encoder_pinB_);
-    left_motor_pinPWM_ = preferences_.getInt("lMoPWMPin", left_motor_pinPWM_);
+
     right_motor_pinA_ = preferences_.getInt("rMoPinA", right_motor_pinA_);
     right_motor_pinB_ = preferences_.getInt("rMoPinB", right_motor_pinB_);
+    right_motor_pinPWM_ = preferences_.getInt("rMoPWMPin", right_motor_pinPWM_);
 
     right_encoder_pinA_ = preferences_.getInt("renPinA", right_encoder_pinA_);
     right_encoder_pinB_ = preferences_.getInt("renPinB", right_encoder_pinB_);
-    right_motor_pinPWM_ = preferences_.getInt("rMoPWMPin", right_motor_pinPWM_);
 
     preferences_.end();
 }

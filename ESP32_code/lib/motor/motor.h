@@ -21,6 +21,7 @@ public:
     void brake();
 
 private:
+    bool init_ = false;
     int pin_A_ = -1, pin_B_ = -1, pin_PWM_ = -1;
     static int channel_cnt_;
     int channel_id_ = 0;

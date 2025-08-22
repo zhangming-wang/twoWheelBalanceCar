@@ -58,6 +58,9 @@ void MPU6050Control::setDmpHandle(bool isDmpHandle) {
 }
 
 bool MPU6050Control::_manual_init() {
+    if (pin_SDA_ <= 0 || pin_SCL_ <= 0)
+        return false;
+
     Wire.begin(pin_SDA_, pin_SCL_);
     Wire.beginTransmission(0x68);
     Wire.write(0x6B); // PWR_MGMT_1 register
@@ -73,6 +76,9 @@ bool MPU6050Control::_manual_init() {
 }
 
 bool MPU6050Control::_dmp_init() {
+    if (pin_SDA_ <= 0 || pin_SCL_ <= 0)
+        return false;
+
     Wire.begin(pin_SDA_, pin_SCL_);
     Wire.setClock(400000); // I2C 400kHz
     delay(500);

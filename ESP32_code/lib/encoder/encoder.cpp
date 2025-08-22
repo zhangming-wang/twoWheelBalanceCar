@@ -3,14 +3,18 @@
 #include "encoder.h"
 
 Encoder::Encoder() {
-    reset();
 }
 
 void Encoder::set_pins(int pin_A, int pin_B) {
     if (pin_A_ != pin_A || pin_B_ != pin_B) {
         pin_A_ = pin_A;
         pin_B_ = pin_B;
-        encoder_.attachFullQuad(pin_A, pin_B);
+
+        if (pin_A_ >= 0 && pin_B_ >= 0) {
+            encoder_.detach();
+            encoder_.attachFullQuad(pin_A, pin_B);
+            reset();
+        }
     }
 }
 

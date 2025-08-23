@@ -21,17 +21,6 @@ extern "C" {
 #include <utility>
 #include <vector>
 
-// struct DiffDriverSpeed {
-//     volatile float v;
-//     volatile float w;
-// };
-
-// struct DiffDriverPos {
-//     volatile float x;
-//     volatile float y;
-//     volatile float angle;
-// };
-
 class TwoWheelDiffModel {
     friend void control_loop(void *args);
 

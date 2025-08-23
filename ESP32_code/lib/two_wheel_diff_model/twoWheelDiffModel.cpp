@@ -25,24 +25,6 @@ TwoWheelDiffModel::TwoWheelDiffModel() {
 }
 
 void TwoWheelDiffModel::init_and_start() {
-    // set_motion_mode(0);
-    // set_milliseconds(20);
-    // set_model_settings(0.065, 0.172, 514, 130);
-
-    // set_mpu6050_pins(18, 19);
-    // set_left_motor_control_pins(12, 13, 25, 26, -1);
-    // set_right_motor_control_pins(22, 23, 33, 32, -1); // 22
-
-    // set_motor_pid_params(1, 0, 0, 1000);
-    // set_attitude_ahead_pid_params(1, 0, 0, 1000);
-    // set_attitude_back_pid_params(1, 0, 0, 1000);
-    // set_speed_pid_params(1, 0, 0, 1000);
-    // set_position_pid_params(1, 0, 0, 1000);
-
-    // set_speed_plan_parms(10, 5, 1);
-
-    // start();
-
     _load_settings();
     _load_params();
 
@@ -517,7 +499,9 @@ void TwoWheelDiffModel::read_params(motion_params_service__srv__MotionParamsServ
     response->attitude_loop_milliseconds_cnt = attitude_loop_period_cnt_;
     response->speed_loop_milliseconds_cnt = speed_loop_period_cnt_;
 
+    response->enable_speed_plan = enable_speed_plan_;
     response->motion_mode = motion_mode_;
+
     response->speed_percent = speed_percent_;
     response->max_v = max_v_;
     response->max_acc = max_acc_;
@@ -564,6 +548,7 @@ void TwoWheelDiffModel::save_params() {
     preferences_.putUInt("attiLoopmillisecCnt", attitude_loop_period_cnt_);
     preferences_.putUInt("spdLoopmillisecCnt", speed_loop_period_cnt_);
 
+    preferences_.putInt("mode", motion_mode_);
     preferences_.putBool("enableSpeedPlan", enable_speed_plan_);
 
     preferences_.putFloat("maxV", max_v_);
@@ -611,6 +596,7 @@ void TwoWheelDiffModel::_load_params() {
     attitude_loop_period_cnt_ = preferences_.getUInt("attiLoopmillisecCnt", attitude_loop_period_cnt_);
     speed_loop_period_cnt_ = preferences_.getUInt("spdLoopmillisecCnt", speed_loop_period_cnt_);
 
+    motion_mode_ = preferences_.getInt("mode", motion_mode_);
     enable_speed_plan_ = preferences_.getBool("enableSpeedPlan", enable_speed_plan_);
 
     max_v_ = preferences_.getFloat("maxV", max_v_);
@@ -676,8 +662,6 @@ void TwoWheelDiffModel::save_settings() {
     preferences_.begin("settings", false);
     preferences_.clear();
 
-    preferences_.putInt("mode", motion_mode_);
-
     preferences_.putFloat("wheDia", wheel_diameter_);
     preferences_.putFloat("traWdi", track_width_);
     preferences_.putInt("pluPerRev", pluses_per_revolution_);
@@ -703,8 +687,6 @@ void TwoWheelDiffModel::save_settings() {
 
 void TwoWheelDiffModel::_load_settings() {
     preferences_.begin("settings", true); // 只读模式
-
-    motion_mode_ = preferences_.getInt("mode", motion_mode_);
 
     wheel_diameter_ = preferences_.getFloat("wheDia", wheel_diameter_);
     track_width_ = preferences_.getFloat("traWdi", track_width_);

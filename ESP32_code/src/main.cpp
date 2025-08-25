@@ -11,7 +11,7 @@
 
 const char *wifi_name = "TP-LINK_403";
 const char *wifi_password = "403123456";
-const char *wifi_IP = "192.168.1.103";
+const char *wifi_IP = "192.168.1.101";
 
 IPAddress ESP32_IP = IPAddress(192, 168, 1, 200);
 

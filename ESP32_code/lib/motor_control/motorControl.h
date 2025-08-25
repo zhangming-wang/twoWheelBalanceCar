@@ -13,6 +13,8 @@
 class MotorControl {
 public:
     MotorControl();
+    bool init_success();
+
     void set_pins(int motor_AIN1, int motor_AIN2, int encoder_pinA, int encoder_pinB, int motor_pwmPin = -1);
 
     void update(float dt);

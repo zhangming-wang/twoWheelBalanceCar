@@ -9,6 +9,10 @@ Motor::Motor() {
     ledcSetup(channel_id_, 5000, RESOLUTIONBITS);
 }
 
+bool Motor::init_success() {
+    return init_;
+}
+
 void Motor::set_pins(int pin_A, int pin_B, int pin_PWM) {
     if (pin_A_ != pin_A || pin_B_ != pin_B || pin_PWM_ != pin_PWM) {
         pin_A_ = pin_A;

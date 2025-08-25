@@ -9,6 +9,10 @@ MotorControl::MotorControl() {
     encoder_->reset();
 }
 
+bool MotorControl::init_success() {
+    return encoder_->init_success() && motor_->init_success();
+}
+
 void MotorControl::update(float dt) {
     encoder_->update(dt);
 }

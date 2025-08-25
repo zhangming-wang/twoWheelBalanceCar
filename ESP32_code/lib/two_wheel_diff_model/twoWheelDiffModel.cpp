@@ -91,6 +91,8 @@ void TwoWheelDiffModel::set_model_settings(float wheel_diameter, float track_wid
     left_motor_control_->set_max_v(target_max_v_);
     right_motor_control_->set_model_params(wheel_diameter_, track_width_, pluses_per_revolution_, revolutions_per_minute_);
     right_motor_control_->set_max_v(target_max_v_);
+
+    set_speed_percent(max_v_ / target_max_v_);
 }
 
 void TwoWheelDiffModel::set_mpu6050_pins(int pin_SDA, int pin_SCL) {

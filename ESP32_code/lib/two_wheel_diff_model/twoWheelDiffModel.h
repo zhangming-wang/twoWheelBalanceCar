@@ -91,7 +91,17 @@ public:
     nav_msgs__msg__Odometry &get_odom_msg();
 
 private:
-    //---------保存参数---------
+    //---------需要保存配置---------
+    int motion_mode_ = 0;
+
+    float wheel_diameter_ = 10, track_width_ = 10;
+    int pluses_per_revolution_ = 10, revolutions_per_minute_ = 10;
+
+    int pin_SDA_ = -1, pin_SCL_ = -1;
+    int left_motor_pinA_ = -1, left_motor_pinB_ = -1, left_encoder_pinA_ = -1, left_encoder_pinB_ = -1, left_motor_pinPWM_ = -1;
+    int right_motor_pinA_ = -1, right_motor_pinB_ = -1, right_encoder_pinA_ = -1, right_encoder_pinB_ = -1, right_motor_pinPWM_ = -1;
+
+    //---------需要保存参数---------
     volatile uint milliseconds_ = 10, attitude_loop_period_cnt_ = 2, speed_loop_period_cnt_ = 5;
 
     float max_v_ = 1, max_acc_ = 10, jerk_ = 1, max_w_ = 0;
@@ -106,29 +116,18 @@ private:
     float left_motor_p_ = 1, left_motor_i_ = 0, left_motor_d_ = 0, left_motor_max_integral_ = 1000;
     float right_motor_p_ = 1, right_motor_i_ = 0, right_motor_d_ = 0, right_motor_max_integral_ = 1000;
 
-    //---------保存配置---------
-    int motion_mode_ = 0;
-
-    int pin_SDA_ = -1, pin_SCL_ = -1;
-    int left_motor_pinA_ = -1, left_motor_pinB_ = -1, left_encoder_pinA_ = -1, left_encoder_pinB_ = -1, left_motor_pinPWM_ = -1;
-    int right_motor_pinA_ = -1, right_motor_pinB_ = -1, right_encoder_pinA_ = -1, right_encoder_pinB_ = -1, right_motor_pinPWM_ = -1;
-
-    //---------内部参数---------
+    //---------局部内部参数---------
     uint period_cnt_ = 0;
     volatile bool running_ = false, enable_speed_plan_ = false;
 
     float dt_ = 0, attitude_loop_dt_ = 0, speed_loop_dt_ = 0;
-
-    float wheel_diameter_ = 0, track_width_ = 0;
-    int pluses_per_revolution_ = 0, revolutions_per_minute_ = 0;
+    int64_t time_record_ = 0, last_time_record_ = 0;
 
     volatile float current_x_ = 0, current_y_ = 0, current_angle_ = 0, target_x_ = 0, target_y_ = 0, target_angle_ = 0;
     volatile float current_v_ = 0, current_w_ = 0, target_v_ = 0, target_w_ = 0, adjust_target_v_ = 0, adjust_target_w_ = 0;
 
     std::pair<float, float> target_wheel_v_;
     std::deque<std::pair<float, float>> target_speed_deque_;
-
-    int64_t time_record_ = 0, last_time_record_ = 0;
 
     Preferences preferences_;
 

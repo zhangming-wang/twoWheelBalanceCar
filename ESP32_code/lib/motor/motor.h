@@ -8,6 +8,8 @@
 class Motor {
 public:
     Motor();
+    bool init_success();
+
     void set_pins(int pin_A, int pin_B, int pin_PWM = -1);
 
     void move();
